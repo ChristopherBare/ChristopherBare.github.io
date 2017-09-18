@@ -3,6 +3,7 @@ layout: post
 title:  "Figuring Things Out"
 date:   2017-09-18 11:20:44 -0400
 categories: site maintenance things
+comments: true
 ---
 Now that I have really learned the in's and out's of the Jekyll framework, I can have some fun with actually posting things to this GitHub Pages blog. I've also realized that every day that I'm in the library in the morning, I don't really do much work, so I can feasibly make a blog post at least twice a week. Plus more if I have something good or interesting to talk about. Which could come up I think.
 
