@@ -6,7 +6,7 @@ categories: colatz conjecture
 ---
 This may seem like it's coming out of left field, but today I'm going to talk about the Colatz Conjecture. My reasoning for this is because I was helping my friend Joe with his beginning java homework and used the program that I wrote to illustrate how to make a game run in a console.
 
-<h2>The main purpose of the Colatz conjecture is to take any positive integer, and when you apply some recursive logic to it, it will eventually become 1.</h2>
+<h4>The main purpose of the Colatz conjecture is to take any positive integer, and when you apply some recursive logic to it, it will eventually become 1.</h4>
 
 When I took Calculus 1, the first thing that my teacher Luke Walsh had us do was write out the iterations of the conjecture by hand. This tedium inspired me to write a java program that would do it for any number that you input.
 
