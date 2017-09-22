@@ -10,7 +10,7 @@
   <meta name="description" content="This may seem like it’s coming out of left field, but today I’m going to talk about the Colatz Conjecture. My reasoning for this is because I was helping my ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/colatz/conjecture/2017/09/20/colatz-conjecture.html">
+  <link rel="canonical" href="http://localhost:4000/colatz/conjecture/2017/09/21/colatz-conjecture.html">
   <link rel="alternate" type="application/rss+xml" title="Christopher Bare&#39;s Blog" href="/feed.xml">
   
   
@@ -72,9 +72,9 @@
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">The Colatz Conjecture</h1>
     <p class="post-meta">
-      <time datetime="2017-09-20T01:41:44-04:00" itemprop="datePublished">
+      <time datetime="2017-09-21T01:41:44-04:00" itemprop="datePublished">
         
-        Sep 20, 2017
+        Sep 21, 2017
       </time>
       </p>
   </header>
@@ -82,12 +82,18 @@
   <div class="post-content" itemprop="articleBody">
     <p>This may seem like it’s coming out of left field, but today I’m going to talk about the Colatz Conjecture. My reasoning for this is because I was helping my friend Joe with his beginning java homework and used the program that I wrote to illustrate how to make a game run in a console.</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */</span>
-<span class="kn">package</span> <span class="n">colatzconjecture</span><span class="o">;</span>
+<h4>The main purpose of the Colatz conjecture is to take any positive integer, and when you apply some recursive logic to it, it will eventually become 1.</h4>
+<p>I could probably write more on that, but wikipedia is already a thing.</p>
+
+<p>When I took Calculus 1, the first thing that my teacher Luke Walsh had us do was write out the iterations of the conjecture by hand. This tedium inspired me to write a java program that would do it for any number that you input.</p>
+
+<p>In the couple of hours that it took me to write the code below, I learned that you need to use the java BigInteger class for the program to work properly. BigInteger allows java to handle numbers that are larger than a 32 bit number. That was a good learning experience, which taught me about the limitations of certain languages for performing mathematical calculations.</p>
+
+<p>Just thought I would share my code with you. It’s already on my GitHub page which is linked in the footer if you want to see it.</p>
+
+<h3>Colatz Conjecture Code:</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">colatzconjecture</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.math.BigInteger</span><span class="o">;</span>
@@ -102,8 +108,7 @@
      * @param args the command line arguments
      */</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">//Colatz Conjecture Program</span>
-
+        <span class="c1">//Colatz Conjecture Program menu</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Welcome to the Colatz Conjecture Program!"</span><span class="o">);</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The equations used here are:"</span><span class="o">);</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Odd: n/3"</span><span class="o">);</span>
@@ -115,8 +120,6 @@
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"That's not what we expected. Try again."</span><span class="o">);</span>
             <span class="n">Run</span><span class="o">();</span>
-            <span class="c1">//Calculate();</span>
-
         <span class="o">}</span>
     <span class="o">}</span>
     <span class="cm">/**
@@ -127,7 +130,6 @@
         <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
 
         <span class="k">while</span> <span class="o">(</span><span class="n">running</span><span class="o">)</span> <span class="o">{</span>
-
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Enter 1 to calculate another number."</span><span class="o">);</span>
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Or if you would like to exit the program enter 0."</span><span class="o">);</span>
             <span class="kt">long</span> <span class="n">r</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
@@ -136,9 +138,7 @@
             <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">Calculate</span><span class="o">();</span>
             <span class="o">}</span>
-
         <span class="o">}</span>
-
     <span class="o">}</span>
     <span class="cm">/**
      * Calculates the given value that the user entered previously.
@@ -150,7 +150,6 @@
         <span class="kt">long</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
         <span class="k">try</span> <span class="o">{</span>
             <span class="k">while</span> <span class="o">(</span><span class="n">calculate</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-
                 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Please enter an integer of your choosing:"</span><span class="o">);</span>
                 <span class="n">n</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextBigInteger</span><span class="o">();</span>
                 <span class="n">BigInteger</span> <span class="n">one</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigInteger</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
@@ -161,7 +160,6 @@
                 <span class="n">two</span> <span class="o">=</span> <span class="n">BigInteger</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
                 <span class="n">three</span> <span class="o">=</span> <span class="n">BigInteger</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
                 <span class="k">while</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">one</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-
                     <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">mod</span><span class="o">(</span><span class="n">two</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">BigInteger</span><span class="o">.</span><span class="na">ONE</span><span class="o">))</span> <span class="o">{</span>
                         <span class="n">BigInteger</span> <span class="n">odd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigInteger</span><span class="o">(</span><span class="s">"0"</span><span class="o">);</span>
                         <span class="c1">//odd = n.multiply(three).add(one);</span>
@@ -177,18 +175,13 @@
                     <span class="o">}</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">BigInteger</span><span class="o">.</span><span class="na">ONE</span><span class="o">))</span> <span class="o">{</span>
                         <span class="n">calculate</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-
                     <span class="o">}</span>
                     <span class="n">counter</span><span class="o">++;</span>
                 <span class="o">}</span>
-
             <span class="o">}</span>
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-
             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"That's not a number. Try again."</span><span class="o">);</span>
-
         <span class="o">}</span>
-
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It took: "</span> <span class="o">+</span> <span class="n">counter</span> <span class="o">+</span> <span class="s">" steps to get to 1."</span><span class="o">);</span>
         <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="o">}</span>
@@ -197,8 +190,9 @@
         <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
     <span class="o">}</span>
 
-<span class="o">}</span></code></pre></figure>
+  <span class="o">}</span></code></pre></figure>
 
+<p>-C</p>
 
   </div>
 
@@ -208,8 +202,8 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'http://localhost:4000/colatz/conjecture/2017/09/20/colatz-conjecture.html';
-      this.page.identifier = 'http://localhost:4000/colatz/conjecture/2017/09/20/colatz-conjecture.html';
+      this.page.url = 'http://localhost:4000/colatz/conjecture/2017/09/21/colatz-conjecture.html';
+      this.page.identifier = 'http://localhost:4000/colatz/conjecture/2017/09/21/colatz-conjecture.html';
     };
 
     (function() {
