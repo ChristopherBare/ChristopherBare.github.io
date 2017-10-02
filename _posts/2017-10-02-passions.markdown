@@ -6,17 +6,21 @@ categories: what are the passions that keep you going in life
 ---
 A question was posited to me that I didn't expect to answer this morning. That question was:
 
-```
+<h2>
 What are you really passionate about?
-```
+</h2>
 
 I was asked this by Dr. Bruce Long in his office when after I went to ask him what I should do about my Statistics class that I missed a test in this morning. This question was asked after we finished talking about that. The answer to that question was simple.
 
-<h3>If you were given all the time in the world, and no real responsibility, what would you find yourself doing?</h3>
+
+<strong>If you were given all the time in the world, and no real responsibility, what would you find yourself doing?</strong>
+
 
 More specifically:
 
-<h3>What do you do for fun?</h3>
+
+<strong>What do you do for fun?</strong>
+
 
 Because what you want to do when it doesn't feel like work is what you should be doing with your life. There isn't really anything that you can't spin into a career these days. As a millennial, I know that all too well. If you don't like the job you have now, get a new one. Or better yet, invent one for yourself.
 
@@ -24,4 +28,10 @@ Just look at all the millionaires that are under 30 right now. They had that sam
 
 There are factories in Japan, China, and even the US that all of the assembly line workers are offered an extra few dollars if they can do something "right now" to improve the process of manufacturing.
 
-This method of reinventing "right now" is known as the Kaizen Method. It is something that I have been looking into lately and have tried to implement as often as possible. This could be something as simple as listening to the piece that you are about to play for your violin lesson in the car a few times, or imagining yourself doing a particular task perfectly to mentally practice something. Coding is a good example here. Planning out how you would code something and then sitting down to actually implement it is a great use of this method. 
+This method of reinventing "right now" is known as the Kaizen Method. It is something that I have been looking into lately and have tried to implement as often as possible. This could be something as simple as listening to the piece that you are about to play for your violin lesson in the car a few times, or imagining yourself doing a particular task perfectly to mentally practice something. Coding is a good example here. Planning out how you would code something and then sitting down to actually implement it is a great use of this method.
+
+I've been on an [Art of Manliness Podcast Kick][AOM-Podcast] lately, so that is where I heard of the Kaizen Method. Nothing wrong with a little learning on the drive home.
+
+What do you think? What are you <i>really</i> passionate about?
+
+[AOM-Podcast]: http://www.artofmanliness.com/category/podcast/
