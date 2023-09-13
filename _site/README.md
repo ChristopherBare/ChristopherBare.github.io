@@ -1,1 +1,0 @@
-# ChristopherBare.github.io
