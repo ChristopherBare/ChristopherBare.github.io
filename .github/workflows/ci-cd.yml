@@ -35,6 +35,7 @@ jobs:
               run: bun run build
               working-directory: ${{env.working-directory}}
             - name: Deploy
+              working-directory: ${{env.working-directory}}
               run: |
                   git config --global user.name $user_name
                   git config --global user.email $user_email
