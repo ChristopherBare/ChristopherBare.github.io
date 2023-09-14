@@ -34,16 +34,6 @@ jobs:
             - name: Build
               run: bun run build
               working-directory: ${{env.working-directory}}
-    deploy:
-        runs-on: ubuntu-latest
-        env:
-            working-directory: ./site
-        strategy:
-            matrix:
-                node-version: [ 18.x ]
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3
             - name: Deploy
               run: |
                   git config --global user.name $user_name
@@ -55,5 +45,3 @@ jobs:
                   user_email: 'github-actions[bot]@users.noreply.github.com'
                   github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
                   repository: ${{ github.repository }}
-      
-  
