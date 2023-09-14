@@ -35,7 +35,7 @@ jobs:
 #      run: npm test
 
     - name: Build
-      run: ls && bun run build
+      run: cd site/ && bun run build
       
     - name: Deploy
       run: |
