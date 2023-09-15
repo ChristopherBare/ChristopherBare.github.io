@@ -1,6 +1,4 @@
-import { css } from 'styled-components';
-
-const siteColors = {
+export const siteColors = {
     bg: `#112340`,
     lineHighlight: `#1d2d50`,
     blue: `#5ccfe6`,
