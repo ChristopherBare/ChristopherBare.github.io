@@ -1,5 +1,4 @@
 // Header.js
-import React from 'react';
 import { siteColors } from '../styles/styles'
 
 function Header() {
