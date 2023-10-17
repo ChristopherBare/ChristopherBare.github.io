@@ -1,11 +1,11 @@
 import './App.css';
-import Navbar from './navbar/navbar'; // Import the Navbar component
+import NavBar from './navbar/navbar'; // Import the Navbar component
 import Header from './header/Header';
 
 function App() {
   return (
     <div className="App">
-      <Navbar /> {/* Include the Navbar component here */}
+      <NavBar />
       <header className="App-header">
         {/* Content for your main page */}
         <Header />
