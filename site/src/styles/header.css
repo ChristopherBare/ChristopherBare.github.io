@@ -1,7 +1,7 @@
 /* Header.css */
 .Header {
     text-align: center;
-    margin-top: 100px; /* Adjust the margin-top for vertical spacing */
+
 }
 
 .Header h1 {
@@ -10,5 +10,5 @@
 
 .Header p {
     font-size: 1.5rem; /* Adjust the font size for the sub-heading */
-  color: #777; /* Adjust the color for the sub-heading text */
+    color: #777; /* Adjust the color for the sub-heading text */
 }

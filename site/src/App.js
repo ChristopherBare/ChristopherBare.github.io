@@ -6,10 +6,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <header className="App-header">
-        {/* Content for your main page */}
-        <Header />
-      </header>
+      <Header />
     </div>
     );
 }

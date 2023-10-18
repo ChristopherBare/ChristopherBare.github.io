@@ -7,15 +7,18 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavBar() {
     return (
-        <Navbar collapseOnSelect expand="lg" className="Navbar">
-            <Container>
-                <Navbar.Brand className="Navbar-logo">
-                    <img src={logo} className="App-logo" alt="logo" />
+        <Navbar expand="lg" className="Navbar" sticky="top">
+            <Container fluid>
+                <Navbar.Brand className="Navbar-logo" href="#home">
+                    <img src={logo} className="App-logo d-inline-block align-top" alt="logo" />
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav className="justify-content-end">
+                        <Nav.Link href="#home" className="text-white">Home</Nav.Link>
+                        <Nav.Link href="#home" className="text-white">About</Nav.Link>
+                        <Nav.Link href="#home" className="text-white">Portfolio</Nav.Link>
+                        <Nav.Link href="#home" className="text-white">Contact</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
