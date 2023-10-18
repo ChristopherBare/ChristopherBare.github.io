@@ -5,10 +5,10 @@ function Header() {
     return (
         <header className="App-header">
             <div className="Header">
-                <p style={{color: siteColors.green}}>Hi, my name is</p>
+                <p style={{color: siteColors.green}}>Hi, my name is:</p>
                 <h1>Christopher Bare</h1>
-                <h2></h2>
-                <p><span style={{color: siteColors.green}}>I&lsquo;m a </span>Senior Software Engineer</p>
+                <h2><span style={{color: siteColors.green}}>I&lsquo;m a </span>Senior Software Engineer</h2>
+                <p>I convert caffeine into software.</p>
             </div>
         </header>
     );
