@@ -1,15 +1,17 @@
 // Header.js
 import {siteColors} from '../styles/styles'
 
-function About() {
+function Contact() {
     return (
-        <header className="App-header" id="about">
+        <header className="App-header" id="contact">
             <div className="Header justify-content-end" style={{fontFamily: 'NotoMono-Regular'}}>
-                <h1>This is the about page.</h1>
+                <h1>This is the contact form.</h1>
                 <p style={{color: siteColors.green}}>hello, friend.</p>
             </div>
         </header>
     );
 }
 
-export default About;
+export default Contact;
+
+

@@ -1,15 +1,15 @@
 // Header.js
 import {siteColors} from '../styles/styles'
 
-function About() {
+function Portfolio() {
     return (
-        <header className="App-header" id="about">
+        <header className="App-header" id="portfolio">
             <div className="Header justify-content-end" style={{fontFamily: 'NotoMono-Regular'}}>
-                <h1>This is the about page.</h1>
+                <h1>This is the portfolio page.</h1>
                 <p style={{color: siteColors.green}}>hello, friend.</p>
             </div>
         </header>
     );
 }
 
-export default About;
+export default Portfolio;

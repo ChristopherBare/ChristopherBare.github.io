@@ -1,7 +1,9 @@
 import './App.css';
-import NavBar from './navbar/navbar'; // Import the Navbar component
+import NavBar from './navbar/navbar';
 import Welcome from './welcome/welcome';
 import About from "./about/about";
+import Portfolio from "./portfolio/portfolio";
+import Contact from "./contact/contact";
 
 function App() {
     return (
@@ -9,6 +11,8 @@ function App() {
             <NavBar/>
             <Welcome/>
             <About/>
+            <Portfolio/>
+            <Contact/>
         </div>
     );
 }
