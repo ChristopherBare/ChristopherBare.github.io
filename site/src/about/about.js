@@ -9,8 +9,8 @@ function About() {
             <div className="Header" style={{fontFamily: 'NotoMono-Regular'}}>
                 <h1 style={{color: siteColors.green}} className="justify-content-start">About Me</h1>
                 <p style={{color: siteColors.green, fontSize: "18px"}}>hello, friend.</p>
-                <Container style={{fontSize: "18px"}}>
-                <p>My name is Chris and I like to make things that I&lsquo;m passionate about and that I feel is
+                <Container style={{fontSize: "1.5rem"}} className="text-start">
+                <p>My name is Chris and I like to make things that I&lsquo;m passionate about. Things that I feel are
                     genuinely
                     cool. I started my technology journey back in 2012 when I got my first laptop my freshmen year of
                     high school. With it, I started to explore everything that was out there. I stumbled upon an article
@@ -24,23 +24,26 @@ function About() {
                     bring
                     it to life. </p>
                 <p>Here are a few of my favorite technologies that I work with regularly:</p></Container>
-                <Container style={{fontSize:"16px", color: siteColors.green}}>
-                    <Row className="justify-content-md-center">
-                        <Col xs={3}>
+                <Container style={{fontSize:"1.2rem", color: siteColors.green}}>
+                    <Row className="justify-content-center">
+                        <Col xs={3} className="text-start">
                             <ul>
                                 <li>Terraform</li>
                                 <li>AWS</li>
                                 <li>Python</li>
                                 <li>Golang</li>
                                 <li>Node.js</li>
+                                <li>Ruby</li>
                             </ul>
                         </Col>
-                        <Col xs={3}>
+                        <Col xs={1} className="text-start">
                             <ul>
                                 <li>React</li>
                                 <li>Angular</li>
                                 <li>Mithril.js</li>
                                 <li>GraphQL</li>
+                                <li>Django</li>
+                                <li>Rails</li>
                             </ul>
                         </Col>
                     </Row>
