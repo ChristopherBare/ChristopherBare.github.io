@@ -22,7 +22,11 @@ function Contact() {
         const { email, message } = formData;
 
         // You can now perform any action with the form data, such as sending it to your server.
+        //TODO add logic to send email with lambda here
         console.log('Form Data:', { email, message });
+
+        //clear out the form again
+        setFormData({message: '', email: ''})
     };
 
     return (
