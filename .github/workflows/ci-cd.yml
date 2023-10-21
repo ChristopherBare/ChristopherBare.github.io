@@ -55,11 +55,11 @@ jobs:
         run: |
           python3 -m venv lambda_env
           source lambda_env/bin/activate
-          pip install ./lambdas/email_lambda/requirements.txt
+          pip install lambdas/email_lambda/resources.txt
           cd lambda_env/lib/python3.8/site-packages/
           zip -r9 lambda_deployment_package.zip .
           cd ../../../../
-          zip -g lambda_deployment_package.zip lambdas/email_lambda/lambda.py
+          zip -g lambda_deployment_package.zip ./lambdas/email_lambda/lambda.py
 
       - name: configureawscredentials
         uses: aws-actions/configure-aws-credentials@v1
