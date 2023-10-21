@@ -4,45 +4,99 @@
 name: CI/CD
 
 on:
-    push:
-        branches: [ "master" ]
-    pull_request:
-        branches: [ "master" ]
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
+  deploy-site:
+    runs-on: ubuntu-latest
+    env:
+      site-directory: ./site
+      terraform-directory: ./terraform
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: us-east-1
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          # The version of Bun to install. (e.g. "latest", "canary", "0.5.6", <sha>)
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+        working-directory: ${{env.site-directory}}
+      #    - name: Run tests
+      #      run: npm test
+      - name: Build
+        run: bun run build
+        working-directory: ${{env.site-directory}}
+      - name: Deploy
+        working-directory: ${{env.site-directory}}
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+          git remote set-url origin https://${github_token}@github.com/${repository}
+          bun run deploy
         env:
-            working-directory: ./site
-        strategy:
-            matrix:
-                node-version: [ 18.x ]
-                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3
-            - name: Setup Bun
-              uses: oven-sh/setup-bun@v1
-              with:
-                  # The version of Bun to install. (e.g. "latest", "canary", "0.5.6", <sha>)
-                  bun-version: latest
-            - name: Install dependencies
-              run: bun install
-              working-directory: ${{env.working-directory}}
-            #    - name: Run tests
-            #      run: npm test
-            - name: Build
-              run: bun run build
-              working-directory: ${{env.working-directory}}
-            - name: Deploy
-              working-directory: ${{env.working-directory}}
-              run: |
-                  git config --global user.name $user_name
-                  git config --global user.email $user_email
-                  git remote set-url origin https://${github_token}@github.com/${repository}
-                  bun run deploy
-              env:
-                  user_name: 'github-actions[bot]'
-                  user_email: 'github-actions[bot]@users.noreply.github.com'
-                  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-                  repository: ${{ github.repository }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
+      - name: Build Lambda Zip
+        working-directory: ${{env.terraform-directory}}
+        run: |
+          python3 -m venv lambda_env
+          source lambda_env/bin/activate
+          pip install ./lambdas/email_lambda/requirements.txt
+          cd lambda_env/lib/python3.8/site-packages/
+          zip -r9 lambda_deployment_package.zip .
+          cd ../../../../
+          zip -g lambda_deployment_package.zip lambdas/email_lambda/lambda.py
+
+      - name: configureawscredentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::726032046446:role/github-actions-role
+          role-session-name: samplerolesession
+          aws-region: ${{env.AWS_DEFAULT_REGION}}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.x
+
+      - name: Terraform fmt
+        id: fmt
+        working-directory: ${{env.terraform-directory}}
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        working-directory: ${{env.terraform-directory}}
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        working-directory: ${{env.terraform-directory}}
+        run: terraform validate -no-color
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+        working-directory: ${{env.terraform-directory}}
+
+      - name: Terraform Apply
+        id: apply
+        working-directory: ${{env.terraform-directory}}
+        run: |
+          terraform apply -auto-approve
