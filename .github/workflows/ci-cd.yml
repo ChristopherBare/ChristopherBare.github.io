@@ -23,6 +23,12 @@ jobs:
         node-version: [ 18.x ]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
+      - name: configureawscredentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::726032046446:role/github-actions-role
+          role-session-name: samplerolesession
+          aws-region: ${{env.AWS_DEFAULT_REGION}}
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Bun
@@ -59,13 +65,6 @@ jobs:
           zip -r9 lambda_deployment_package.zip .
           cd ../
           zip -g lambda_deployment_package.zip ./lambdas/email_lambda/lambda.py
-
-      - name: configureawscredentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: arn:aws:iam::726032046446:role/github-actions-role
-          role-session-name: samplerolesession
-          aws-region: ${{env.AWS_DEFAULT_REGION}}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
