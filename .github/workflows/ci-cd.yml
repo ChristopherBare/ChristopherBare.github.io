@@ -53,12 +53,11 @@ jobs:
       - name: Build Lambda Zip
         working-directory: ${{env.terraform-directory}}
         run: |
-          python3 -m venv lambda_env
-          source lambda_env/bin/activate
-          pip install -r lambdas/email_lambda/resources.txt
-          cd lambda_env/lib/python3.8/site-packages/
+          mkdir libs
+          pip install -t ./libs -r lambdas/email_lambda/resources.txt
+          cd libs
           zip -r9 lambda_deployment_package.zip .
-          cd ../../../../
+          cd ../
           zip -g lambda_deployment_package.zip ./lambdas/email_lambda/lambda.py
 
       - name: configureawscredentials
