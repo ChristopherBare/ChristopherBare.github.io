@@ -55,7 +55,7 @@ jobs:
         run: |
           python3 -m venv lambda_env
           source lambda_env/bin/activate
-          pip install lambdas/email_lambda/resources.txt
+          pip install -r lambdas/email_lambda/resources.txt
           cd lambda_env/lib/python3.8/site-packages/
           zip -r9 lambda_deployment_package.zip .
           cd ../../../../
