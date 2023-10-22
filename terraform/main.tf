@@ -12,7 +12,7 @@ resource "aws_lambda_function" "send_email_lambda" {
     }
   }
   filename = "lambda_deployment_package.zip"
-  source_code_hash = filebase64sha256("send_email_lambda.zip")
+  source_code_hash = filebase64sha256("lambda_deployment_package.zip")
 }
 
 resource "aws_iam_role" "email_lambda_role" {
