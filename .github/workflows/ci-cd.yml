@@ -87,7 +87,9 @@ jobs:
       - name: Terraform Validate
         id: validate
         working-directory: ${{env.terraform-directory}}
-        run: terraform validate -no-color
+        run: |
+          ls -a
+          terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
