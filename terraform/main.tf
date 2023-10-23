@@ -100,12 +100,16 @@ resource "aws_api_gateway_integration_response" "response_200" {
     "application/json" = ""
   }
 }
-
+resource "aws_api_gateway_deployment" "api_deployment" {
+  depends_on  = [aws_api_gateway_integration.lambda]
+  rest_api_id = aws_api_gateway_rest_api.email_api.id
+  stage_name  = "prod"
+}
 resource "aws_lambda_permission" "api_gateway_invoke" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.send_email_lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
-  source_arn = aws_api_gateway_resource.root.arn
+  source_arn = aws_api_gateway_deployment.api_deployment.execution_arn
 }
