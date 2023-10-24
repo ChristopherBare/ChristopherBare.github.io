@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "send_email_lambda" {
   function_name = "sendEmailLambda"
-  role          = aws_iam_role.email_lambda_role.arn
+  role          = [aws_iam_role.email_lambda_role.arn,"lambda_role"]
   handler       = "index.handler"
   runtime       = "python3.8"
 
