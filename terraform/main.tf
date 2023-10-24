@@ -126,9 +126,7 @@ resource "aws_api_gateway_method_response" "Success" {
   http_method = aws_api_gateway_method.post.http_method
   status_code = 200
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true
-  }
+  
 
   response_models = {
     "application/json" = "Empty"
@@ -141,9 +139,7 @@ resource "aws_api_gateway_method_response" "default" {
   http_method = aws_api_gateway_method.post.http_method
   status_code = 200
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true
-  }
+  
 
   response_models = {
     "application/json" = "Empty"
@@ -156,9 +152,7 @@ resource "aws_api_gateway_method_response" "default_400" {
   http_method = aws_api_gateway_method.post.http_method
   status_code = 400
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true
-  }
+  
 
   response_models = {
     "application/json" = "Empty"
@@ -171,9 +165,7 @@ resource "aws_api_gateway_integration_response" "Success" {
   http_method = aws_api_gateway_method.post.http_method
   status_code = 200
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
-  }
+  
 }
 
 resource "aws_api_gateway_integration_response" "default" {
@@ -182,9 +174,7 @@ resource "aws_api_gateway_integration_response" "default" {
   http_method = aws_api_gateway_method.post.http_method
   status_code = 200
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
-  }
+  
 }
 
 resource "aws_api_gateway_integration_response" "default_400" {
@@ -193,9 +183,7 @@ resource "aws_api_gateway_integration_response" "default_400" {
   http_method = aws_api_gateway_method.post.http_method
   status_code = 400
 
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true,
-  }
+  
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
