@@ -32,7 +32,9 @@ def lambda_handler(event, context):
                     'Data': message,
                 },
             },
-        }
+        },
+        # Set "Reply-To" to the email from the event body
+        ReplyToAddresses=[email]
     )
 
     return {
