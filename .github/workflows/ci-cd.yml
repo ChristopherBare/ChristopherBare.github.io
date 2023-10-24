@@ -65,8 +65,8 @@ jobs:
           pip install -t ./libs -r lambdas/email_lambda/resources.txt
           cd libs
           zip -r9 lambda_deployment_package.zip .
-          cd ../
-          zip -g lambda_deployment_package.zip ./lambdas/email_lambda/lambda.py
+          cd ../lambdas/email_lambda/
+          zip -g lambda_deployment_package.zip ./lambda.py
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
