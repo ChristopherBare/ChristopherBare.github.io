@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "send_email_lambda" {
   function_name = "sendEmailLambda"
-  role          = [aws_iam_role.email_lambda_role.arn,"lambda_role"]
+  role          = aws_iam_role.email_lambda_role.arn
   handler       = "index.handler"
   runtime       = "python3.8"
 
@@ -38,10 +38,43 @@ resource "aws_iam_policy" "email_lambda_policy" {
     Statement = [{
       Action = [
         "ses:SendEmail",
-        "ses:SendRawEmail"
+        "ses:SendRawEmail",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListRolePolicies",
+        "iam:ListRoles",
+        "lambda:*",
+        "logs:DescribeLogGroups",
+        "states:DescribeStateMachine",
+        "states:ListStateMachines",
+        "tag:GetResources",
+        "xray:GetTraceSummaries",
+        "xray:BatchGetTraces"
       ],
       Effect   = "Allow",
       Resource = "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "lambda.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogStreams",
+        "logs:GetLogEvents",
+        "logs:FilterLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/*"
     }]
   })
 }
