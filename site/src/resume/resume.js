@@ -1,36 +1,25 @@
 // Header.js
 import {siteColors} from '../styles/styles'
-function getApiData() {
-    // Define the URL of the API you want to fetch data from
-    const apiUrl = 'https://sp14jyfina.execute-api.us-east-1.amazonaws.com/prod/resume';
+import useAPI from '../custom-hooks/useAPI'
 
-// Make a GET request to the API using the fetch function
-    fetch(apiUrl)
-        .then(response => {
-            // Check if the response status is OK (200)
-            if (response.status === 200) {
-                // Parse the response body as JSON
-                return response.json();
-            } else {
-                throw new Error('Failed to fetch data');
-            }
-        })
-        .then(data => {
-            // Handle the JSON data received from the API
-            console.log('Data from the API:', data);
-            // You can do further processing here
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
 
-}
 function Resume() {
+    const apiUrl = 'https://sp14jyfina.execute-api.us-east-1.amazonaws.com/prod/resume'
+    const { data, isLoading, error } = useAPI(apiUrl)
+
     return (
         <header className="App-header" id="resume">
             <div className="Header justify-content-end" style={{fontFamily: 'NotoMono-Regular'}}>
                 <h1>This is the resume page.</h1>
-                <p style={{color: siteColors.green}}>{getApiData()}</p>
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p style={{ color: 'red' }}>Error: {error.message}</p>
+                ) : (
+                    //this will be a styled code block component in the future
+                    //TODO implement code block component here after getting resume api to work
+                    <p style={{ color: siteColors.green }}>{data}</p>
+                )}
             </div>
         </header>
     );
