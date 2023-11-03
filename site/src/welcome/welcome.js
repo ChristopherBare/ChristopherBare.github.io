@@ -8,7 +8,7 @@ function Welcome() {
                 <p style={{color: siteColors.green}}>Hi, my name is:</p>
                 <h1 style={{fontSize: '6rem'}}>Christopher Bare</h1>
                 <h2><span style={{color: siteColors.green}}>I&lsquo;m a </span>Senior Software Engineer</h2>
-                <p>I convert caffeine into software.</p>
+                <p>convert caffeine into code.</p>
             </div>
         </header>
     );
