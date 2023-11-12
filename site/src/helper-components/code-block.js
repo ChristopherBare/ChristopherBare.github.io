@@ -5,7 +5,8 @@ import '../styles/code-block.css'
 
 const CodeBlockComponent = ({ code, lang }) => {
     return (
-        <div style={{ maxWidth: '1000px',maxHeight: '600px', overflow: 'auto', borderRadius: "10px"}}>
+        <div style={{ maxWidth: '1000px',maxHeight: '600px', overflowX: 'auto', overflowY: 'auto',
+            overflow: 'auto', borderRadius: "10px"}}>
             <SyntaxHighlighter className="json-code-block" language={lang} style={dracula}>
                 {code}
             </SyntaxHighlighter>

@@ -5,8 +5,9 @@
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
     hyphens: auto !important;
+    overflow: hidden;
 }
 
 code {
-    white-space: pre-wrap;
+    white-space: pre-wrap !important;
 }
