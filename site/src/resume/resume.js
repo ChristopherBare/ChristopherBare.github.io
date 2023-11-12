@@ -21,8 +21,6 @@ function Resume() {
                 ) : error ? (
                     <p style={{ color: 'red' }}>Error: {error.message}</p>
                 ) : (
-                    //this will be a styled code block component in the future
-                    //TODO implement code block component here after getting resume api to work
                     <CodeBlockComponent code={formattedCode} lang="json" showLineNumbers={true} />
                 )}
             </div>
