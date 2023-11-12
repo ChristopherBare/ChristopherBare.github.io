@@ -1,12 +1,13 @@
 // Header.js
-import {siteColors} from '../styles/styles'
+// import {siteColors} from '../styles/styles'
 import useAPI from '../custom-hooks/useAPI'
+import CodeBlockComponent from '../helper-components/code-block'
 
 
 function Resume() {
     const apiUrl = 'https://sp14jyfina.execute-api.us-east-1.amazonaws.com/prod/resume'
     const { data, isLoading, error } = useAPI(apiUrl)
-
+    const jsonString = JSON.stringify(data, null, 2)
     return (
         <header className="App-header" id="resume">
             <div className="Header justify-content-end" style={{fontFamily: 'NotoMono-Regular'}}>
@@ -18,7 +19,7 @@ function Resume() {
                 ) : (
                     //this will be a styled code block component in the future
                     //TODO implement code block component here after getting resume api to work
-                    <p style={{ color: siteColors.green }}>{data}</p>
+                    <CodeBlockComponent code={jsonString} lang="javascript" showLineNumbers={true} />
                 )}
             </div>
         </header>
