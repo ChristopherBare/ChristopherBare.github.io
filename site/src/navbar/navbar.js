@@ -17,6 +17,7 @@ function NavBar() {
                     <Nav className="justify-content-end">
                         <Nav.Link href="#home" className="text-white">Home</Nav.Link>
                         <Nav.Link href="#about" className="text-white">About</Nav.Link>
+                        <Nav.Link href="#resume" className="text-white">Resume</Nav.Link>
                         <Nav.Link href="#portfolio" className="text-white">Portfolio</Nav.Link>
                         <Nav.Link href="#contact" className="text-white">Contact</Nav.Link>
                     </Nav>

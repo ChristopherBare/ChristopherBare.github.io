@@ -79,6 +79,11 @@ resource "aws_iam_policy" "email_lambda_policy" {
   })
 }
 
+resource "aws_api_gateway_rest_api" "email_api" {
+  name        = "email-api"
+  description = "Email API"
+}
+
 resource "aws_lambda_permission" "apigw_invoke_lambda" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
@@ -91,11 +96,6 @@ resource "aws_iam_role_policy_attachment" "attach_email_lambda_policy" {
   role       = aws_iam_role.email_lambda_role.name
 }
 
-
-resource "aws_api_gateway_rest_api" "email_api" {
-  name        = "email-api"
-  description = "Email API"
-}
 
 resource "aws_api_gateway_resource" "root" {
   rest_api_id = aws_api_gateway_rest_api.email_api.id
