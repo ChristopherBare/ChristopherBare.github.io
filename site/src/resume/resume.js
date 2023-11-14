@@ -17,7 +17,7 @@ function Resume() {
                 <h1>Resume</h1>
                 <p style={{color: siteColors.green}}>This is my <a style={{textDecoration: "none"}} href="https://github.com/ChristopherBare/resum-api">resum-api</a></p>
                 {isLoading ? (
-                    <p>Loading...</p>
+                    <p><span className="loading loading-ring loading-lg"></span></p>
                 ) : error ? (
                     <p style={{ color: 'red' }}>Error: {error.message}</p>
                 ) : (
