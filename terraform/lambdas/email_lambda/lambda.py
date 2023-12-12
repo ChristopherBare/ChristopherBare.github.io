@@ -15,7 +15,7 @@ def lambda_handler(event, context):
     # Replace with your personal email address
     to_email = 'your_personal_email@example.com'
 
-    subject = 'ChristopherBare.github.io - Contact Message'
+    subject = 'ChristopherBare.github.io - Donate Message'
 
     # Send the email
     response = ses.send_email(

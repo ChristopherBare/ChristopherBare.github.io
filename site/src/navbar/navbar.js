@@ -20,6 +20,7 @@ function NavBar() {
                         <Nav.Link href="#resume" className="text-white">Resume</Nav.Link>
                         <Nav.Link href="#portfolio" className="text-white">Portfolio</Nav.Link>
                         <Nav.Link href="#contact" className="text-white">Contact</Nav.Link>
+                        <Nav.Link href="#donate" className="text-white">Donate</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
