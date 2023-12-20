@@ -1,0 +1,14 @@
+/* Header.css */
+.Header {
+    text-align: center;
+
+}
+
+.Header h1 {
+    font-size: 2.5rem; /* Adjust the font size for the title */
+}
+
+.Header p {
+    font-size: 1.5rem; /* Adjust the font size for the sub-heading */
+    color: #777; /* Adjust the color for the sub-heading text */
+}

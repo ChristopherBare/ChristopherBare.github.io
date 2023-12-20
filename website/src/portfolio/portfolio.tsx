@@ -1,13 +1,20 @@
-// Header.js
-import {siteColors} from '../styles/styles'
+import React from 'react';
+import { SiteColors } from '../styles/styles'; // Assuming SiteColors is the interface for your siteColors object
 
-function Portfolio() {
+interface PortfolioProps {}
+
+const Portfolio: React.FC<PortfolioProps> = () => {
+    const siteColors: SiteColors = {
+        // Define your site colors here if it's not already imported as an object
+        // bg: '#112340',
+        // ... rest of the colors
+    };
+
     return (
         <header className="App-header" id="portfolio">
-
-            <div className="Header justify-content-end" style={{fontFamily: 'NotoMono-Regular'}}>
+            <div className="Header justify-content-end" style={{ fontFamily: 'NotoMono-Regular' }}>
                 <h1>This is the portfolio page.</h1>
-                <p style={{color: siteColors.green}}>hello, friend.</p>
+                <p style={{ color: siteColors.green }}>hello, friend.</p>
                 <div className="carousel carousel-center rounded-box">
                     <div className="carousel-item">
                         <div className="card">
@@ -30,6 +37,6 @@ function Portfolio() {
             </div>
         </header>
     );
-}
+};
 
 export default Portfolio;
