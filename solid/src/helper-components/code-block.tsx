@@ -21,7 +21,7 @@ const CodeBlockComponent: React.FC<CodeBlockProps> = ({ code, lang }) => {
                 borderRadius: '10px',
             }}
         >
-            <SyntaxHighlighter className="json-code-block" language={lang} style={dracula}>
+            <SyntaxHighlighter class="json-code-block" language={lang} style={dracula}>
                 {code}
             </SyntaxHighlighter>
         </div>

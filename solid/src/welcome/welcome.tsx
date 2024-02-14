@@ -5,8 +5,8 @@ interface HeaderProps {}
 
 const Welcome: React.FC<HeaderProps> = () => {
     return (
-        <header className="App-header" id="home">
-            <div className="Header justify-content-end" style={{ fontFamily: 'NotoMono-Regular' }}>
+        <header class="App-header" id="home">
+            <div class="Header justify-content-end" style={{ fontFamily: 'NotoMono-Regular' }}>
                 <p style={{ color: siteColors.green }}>Hi, my name is:</p>
                 <h1 style={{ fontSize: '6rem' }}>Christopher Bare</h1>
                 <h2>

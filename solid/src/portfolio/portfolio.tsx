@@ -11,25 +11,25 @@ const Portfolio: React.FC<PortfolioProps> = () => {
     };
 
     return (
-        <header className="App-header" id="portfolio">
-            <div className="Header justify-content-end" style={{ fontFamily: 'NotoMono-Regular' }}>
+        <header class="App-header" id="portfolio">
+            <div class="Header justify-content-end" style={{ fontFamily: 'NotoMono-Regular' }}>
                 <h1>This is the portfolio page.</h1>
                 <p style={{ color: siteColors.green }}>hello, friend.</p>
-                <div className="carousel carousel-center rounded-box">
-                    <div className="carousel-item">
-                        <div className="card">
-                            <div className="card-body">
-                                <h1 className="card-title">HI</h1>
+                <div class="carousel carousel-center rounded-box">
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">HI</h1>
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card-body">
-                                <h1 className="card-title">HI</h1>
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">HI</h1>
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card-body">
-                                <h1 className="card-title">HI</h1>
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">HI</h1>
                             </div>
                         </div>
                     </div>

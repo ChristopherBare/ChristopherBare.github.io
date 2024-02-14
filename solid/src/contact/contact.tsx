@@ -33,12 +33,12 @@ const Contact: React.FC<ContactProps> = () => {
     };
 
     return (
-        <header className="App-header" id="contact">
+        <header class="App-header" id="contact">
             <Container style={{ width: '40rem' }}>
-                <div className="Header" style={{ fontFamily: 'NotoMono-Regular' }}>
+                <div class="Header" style={{ fontFamily: 'NotoMono-Regular' }}>
                     <h3 style={{ color: siteColors.green }}>send me a message.</h3>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group className="md form" controlId="exampleForm.ControlInput1">
+                        <Form.Group class="md form" controlId="exampleForm.ControlInput1">
                             <Form.Label style={{ fontSize: '1.3rem' }}>email address</Form.Label>
                             <Form.Control
                                 type="email"
@@ -48,7 +48,7 @@ const Contact: React.FC<ContactProps> = () => {
                                 onChange={handleInputChange}
                             />
                         </Form.Group>
-                        <Form.Group className="md form" controlId="exampleForm.ControlTextarea1">
+                        <Form.Group class="md form" controlId="exampleForm.ControlTextarea1">
                             <Form.Label style={{ fontSize: '1.3rem' }}>message</Form.Label>
                             <Form.Control
                                 as="textarea"
@@ -59,7 +59,7 @@ const Contact: React.FC<ContactProps> = () => {
                             />
                         </Form.Group>
                         <br />
-                        <div className="d-grid gap-2">
+                        <div class="d-grid gap-2">
                             <Button size="lg" variant="outline-success" type="submit">
                                 Send
                             </Button>
