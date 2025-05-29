@@ -49,15 +49,15 @@ jobs:
       - name: Deploy
         working-directory: ${{env.site-directory}}
         run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
-          git remote set-url origin https://${token}@github.com/${repository}
+          git config --global user.name "$USER_NAME"
+          git config --global user.email "$USER_EMAIL"
+          git remote set-url origin "https://$USER_NAME:$TOKEN@github.com/$REPOSITORY"
           bun run deploy
         env:
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
+          USER_NAME: 'github-actions[bot]'
+          USER_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
       - name: Build Lambda Zip
         working-directory: ${{env.terraform-directory}}
         run: |
