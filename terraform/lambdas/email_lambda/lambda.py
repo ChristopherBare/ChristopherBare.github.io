@@ -1,7 +1,7 @@
 import json
 import boto3
 
-ses = boto3.client('ses', region_name='us-east-1')  # Replace with your desired AWS region
+ses = boto3.client('ses', region_name='us-east-1')  
 
 def lambda_handler(event, context):
     # Parse the event data from the API Gateway trigger
@@ -9,11 +9,11 @@ def lambda_handler(event, context):
     email = body['email']
     message = body['message']
 
-    # Replace with your SES-verified email address
-    from_email = 'your_verified_ses_email@example.com'
+    #  SES-verified email address
+    from_email = 'christopherbare@outlook.com'
 
-    # Replace with your personal email address
-    to_email = 'your_personal_email@example.com'
+    # personal email address
+    to_email = 'christopherbare@outlook.com'
 
     subject = 'ChristopherBare.github.io - Contact Message'
 
