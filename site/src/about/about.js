@@ -12,7 +12,7 @@ function About() {
                 <Container style={{fontSize: "1.5rem"}} className="text-start">
                 <p>My name is Chris and I like to make things that I&lsquo;m passionate about. Things that I feel are
                     genuinely
-                    cool. I started my technology journey back in 2012 when I got my first laptop my freshmen year of
+                    cool. I started my technology journey back in 2008 when I got my first laptop my freshmen year of
                     high school. With it, I started to explore everything that was out there. I stumbled upon an article
                     of how to put a distribution of linux into a virtual machine. I was hooked after that. I started
                     learning everything I could about how unix worked and how to write bash scripts to do things that I
