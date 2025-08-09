@@ -1,43 +1,69 @@
 import json
 import boto3
-
-ses = boto3.client('ses', region_name='us-east-1')  
+import os
 
 def lambda_handler(event, context):
-    # Parse the event data from the API Gateway trigger
-    body = json.loads(event['body'])
-    email = body['email']
-    message = body['message']
+    # Set up SES client
+    ses = boto3.client('ses', region_name=os.environ.get('AWS_REGION', 'us-east-1'))
+    
+    try:
+        # Parse the incoming request
+        body = json.loads(event['body'])
+        email = body.get('email', '').strip()
+        message = body.get('message', '').strip()
+        
+        # Validate required fields
+        if not email or not message:
+            raise ValueError("Email and message are required")
+            
+        if '@' not in email:
+            raise ValueError("Invalid email format")
 
-    #  SES-verified email address
-    from_email = 'christopherbare@outlook.com'
-
-    # personal email address
-    to_email = 'christopherbare@outlook.com'
-
-    subject = 'ChristopherBare.github.io - Contact Message'
-
-    # Send the email
-    response = ses.send_email(
-        Source=from_email,
-        Destination={
-            'ToAddresses': [to_email],
-        },
-        Message={
-            'Subject': {
-                'Data': subject,
+        # Get email addresses from environment variables
+        from_email = os.environ['FROM_EMAIL']
+        to_email = os.environ['TO_EMAIL']
+        
+        # Send the email
+        response = ses.send_email(
+            Source=from_email,
+            Destination={'ToAddresses': [to_email]},
+            Message={
+                'Subject': {'Data': 'New message from your website'},
+                'Body': {
+                    'Text': {
+                        'Data': f"From: {email}\n\nMessage:\n{message}"
+                    }
+                }
             },
-            'Body': {
-                'Text': {
-                    'Data': message,
-                },
-            },
-        },
-        # Set "Reply-To" to the email from the event body
-        ReplyToAddresses=[email]
-    )
-
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Email sent successfully.')
-    }
+            ReplyToAddresses=[email]
+        )
+        
+        return {
+            'statusCode': 200,
+            'body': json.dumps({'message': 'Email sent successfully'}),
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            }
+        }
+        
+    except ValueError as e:
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'error': str(e)}),
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'error': 'Internal server error'}),
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }

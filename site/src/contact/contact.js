@@ -9,24 +9,45 @@ function Contact() {
         email: '',
         message: '',
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
 
-        // Access the form data in the formData state
-        const { email, message } = formData;
+        try {
+            // Get the API Gateway URL from your Terraform output
+            const apiUrl = `${aws_api_gateway_deployment.deployment.invoke_url}/v1`;
+            
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
 
-        // You can now perform any action with the form data, such as sending it to your server.
-        //TODO add logic to send email with lambda here
-        console.log('Form Data:', { email, message });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
-        //clear out the form again
-        setFormData({message: '', email: ''})
+            const data = await response.json();
+            console.log('Success:', data);
+            setSubmitStatus('success');
+            setFormData({ message: '', email: '' });
+        } catch (error) {
+            console.error('Error:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -43,6 +64,7 @@ function Contact() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleInputChange}
+                                required
                             />
                         </Form.Group>
                         <Form.Group className="md form" controlId="exampleForm.ControlTextarea1">
@@ -53,17 +75,35 @@ function Contact() {
                                 name="message"
                                 value={formData.message}
                                 onChange={handleInputChange}
+                                required
                             />
                         </Form.Group>
                         <br />
                         <div className="d-grid gap-2">
-                            <Button size="lg" variant="outline-success" type="submit">Send</Button>
+                            <Button 
+                                size="lg" 
+                                variant="outline-success" 
+                                type="submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send'}
+                            </Button>
                         </div>
+                        {submitStatus === 'success' && (
+                            <div className="mt-3 text-success">
+                                Message sent successfully!
+                            </div>
+                        )}
+                        {submitStatus === 'error' && (
+                            <div className="mt-3 text-danger">
+                                Failed to send message. Please try again.
+                            </div>
+                        )}
                     </Form>
                 </div>
             </Container>
         </header>
-        );
+    );
 }
 
 export default Contact;
