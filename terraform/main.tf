@@ -14,6 +14,9 @@ resource "aws_lambda_function" "send_email_lambda" {
   
   filename         = "lambdas/email_lambda/lambda_deployment_package.zip"
   source_code_hash = filebase64sha256("lambdas/email_lambda/lambda_deployment_package.zip")
+  
+  memory_size = 128  # Adjust based on your needs
+  timeout     = 30   # Adjust based on your needs
 }
 
 resource "aws_iam_role" "email_lambda_role" {
@@ -164,6 +167,46 @@ resource "aws_api_gateway_deployment" "deployment" {
   stage_name  = "prod"
 }
 
-output "api_url" {
-  value = "${aws_api_gateway_deployment.deployment.invoke_url}/contact"
+# Add method response for POST
+resource "aws_api_gateway_method_response" "post_200" {
+  rest_api_id = aws_api_gateway_rest_api.email_api.id
+  resource_id = aws_api_gateway_resource.contact.id
+  http_method = aws_api_gateway_method.post.http_method
+  status_code = "200"
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = true
+  }
+}
+
+# Add integration response for POST
+resource "aws_api_gateway_integration_response" "post" {
+  rest_api_id = aws_api_gateway_rest_api.email_api.id
+  resource_id = aws_api_gateway_resource.contact.id
+  http_method = aws_api_gateway_method.post.http_method
+  status_code = aws_api_gateway_method_response.post_200.status_code
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = "'*'"
+  }
+
+  depends_on = [aws_api_gateway_integration.lambda]
+}
+
+# Add API Gateway stage settings
+resource "aws_api_gateway_stage" "prod" {
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  rest_api_id  = aws_api_gateway_rest_api.email_api.id
+  stage_name   = "prod"
+}
+
+resource "aws_api_gateway_method_settings" "all" {
+  rest_api_id = aws_api_gateway_rest_api.email_api.id
+  stage_name  = aws_api_gateway_stage.prod.stage_name
+  method_path = "*/*"
+
+  settings {
+    metrics_enabled = true
+    logging_level   = "INFO"
+  }
 }
