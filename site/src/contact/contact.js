@@ -24,7 +24,7 @@ function Contact() {
 
         try {
             // Get the API Gateway URL from your Terraform output
-            const apiUrl = `${}/v1`;
+            const apiUrl = `https://4voyg0q44c.execute-api.us-east-1.amazonaws.com/v1`;
             
             const response = await fetch(apiUrl, {
                 method: 'POST',
