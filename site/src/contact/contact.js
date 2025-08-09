@@ -24,7 +24,7 @@ function Contact() {
 
         try {
             // Get the API Gateway URL from your Terraform output
-            const apiUrl = `${aws_api_gateway_deployment.deployment.invoke_url}/v1`;
+            const apiUrl = `${}/v1`;
             
             const response = await fetch(apiUrl, {
                 method: 'POST',
