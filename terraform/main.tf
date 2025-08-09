@@ -197,7 +197,6 @@ resource "aws_api_gateway_integration_response" "post" {
 resource "aws_api_gateway_stage" "prod" {
   deployment_id = aws_api_gateway_deployment.deployment.id
   rest_api_id  = aws_api_gateway_rest_api.email_api.id
-  stage_name   = "prod"
 }
 
 resource "aws_api_gateway_method_settings" "all" {
