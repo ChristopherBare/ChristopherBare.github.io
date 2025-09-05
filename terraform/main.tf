@@ -205,6 +205,6 @@ resource "aws_api_gateway_method_settings" "all" {
 
   settings {
     metrics_enabled = true
-    logging_level   = "INFO"
+    logging_level   = "OFF"
   }
 }
