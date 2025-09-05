@@ -7,7 +7,7 @@ import {siteColors} from "../styles/styles";
 
 
 function Resume() {
-    const apiUrl = 'https://sp14jyfina.execute-api.us-east-1.amazonaws.com/prod/resume'
+    const apiUrl = 'https://26lfhv0nck.execute-api.us-east-1.amazonaws.com/prod/resume'
     const { data, isLoading, error } = useAPI(apiUrl)
     const jsonString = JSON.stringify(data, null, 2)
     const formattedCode = JSON.stringify(JSON.parse(jsonString), null, 2);
