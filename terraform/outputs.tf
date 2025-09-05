@@ -4,5 +4,5 @@ output "api_gateway_url" {
 
 
 output "api_endpoint" {
-  value = "${aws_api_gateway_deployment.deployment.invoke_url}${aws_api_gateway_resource.contact.path}"
+  value = "${aws_api_gateway_stage.prod.invoke_url}${aws_api_gateway_resource.contact.path}"
 }
