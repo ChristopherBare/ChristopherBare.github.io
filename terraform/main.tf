@@ -8,7 +8,6 @@ resource "aws_lambda_function" "send_email_lambda" {
     variables = {
       FROM_EMAIL = "christopherbare@outlook.com"
       TO_EMAIL   = "christopherbare@outlook.com"
-      AWS_REGION = "us-east-1"
     }
   }
   
