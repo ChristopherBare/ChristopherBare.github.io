@@ -13,37 +13,37 @@ function Portfolio() {
         },
         {
             id: 2,
-            title: "WaffleHouseIndex",
-            image: "https://daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg",
-            url: ""
+            title: "Url-Shortener",
+            image: "/url-shortener/small_er.png",
+            url: "https://d2dets859b6ah.cloudfront.net/"
         },
         {
             id: 3,
             title: "Resum-API",
-            image: "https://daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg",
-            url: ""
+            image: "/resum-api/resum_api.png",
+            url: "https://26lfhv0nck.execute-api.us-east-1.amazonaws.com/prod/resume"
         },
-        {
-            id: 4,
-            title: "Url-Shortener",
-            image: "https://daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg",
-            url: ""
-        },
-        {
-            id: 5,
-            title: "Edibl",
-            image: "https://daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg",
-            url: ""
-        }
+        // {
+        //     id: 4,
+        //     title: "Waffle House Index",
+        //     image: "https://daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg",
+        //     url: ""
+        // },
+        // {
+        //     id: 5,
+        //     title: "Edibl",
+        //     image: "https://daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg",
+        //     url: ""
+        // },
         // {
         //     id: 6,
-        //     title: "Project 6",
+        //     title: "Pickup App",
         //     image: "https://daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg",
         //     url: ""
         // },
         // {
         //     id: 7,
-        //     title: "Project 7",
+        //     title: "Pro/Con - Priority",
         //     image: "https://daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg",
         //     url: ""
         // }
